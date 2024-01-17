@@ -1,0 +1,47 @@
+export component MemoryTile inherits Rectangle {
+  callback clicked;
+  in property <bool> open-curtain;
+  in property <bool> solved;
+  in property <image> icon;
+
+  height: 64px;
+  width: 64px;
+  border-radius: 10px;
+  background: solved ? #34CE57 : #3960D5;
+  animate background { duration: 800ms; }
+
+  Image {
+    source: icon;
+    width: parent.width;
+    height: parent.height;
+  }
+
+  // Left curtain
+  Rectangle {
+    background: #193076;
+    border-radius: 10px;
+    x: 0px;
+    width: open-curtain ? 0px : parent.width / 2 + 10px;
+    height: parent.height;
+    animate width { duration: 125ms; easing: ease-in; }
+  }
+
+  // Right curtain
+  Rectangle {
+    background: #193076;
+    border-radius: 10px;
+    x: open-curtain ? parent.width : parent.width / 2 - 10px;
+    width: open-curtain ? 0px : parent.width / 2 + 10px;
+    height: parent.height;
+    animate width { duration: 180ms; easing: ease-in; }
+    animate x { duration: 180ms; easing: ease-in; }
+  }
+
+  TouchArea {
+    clicked => {
+      // Delegate to the user of this element
+      root.clicked();
+    }
+  }
+}
+
