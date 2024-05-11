@@ -31,8 +31,7 @@ fn main() -> Result<()> {
         if let (Some((t1_idx, mut t1)), Some((t2_idx, mut t2))) =
             (flipped_tiles.next(), flipped_tiles.next())
         {
-            let is_pair_solved = t1 == t2;
-            if is_pair_solved {
+            if t1 == t2 {
                 t1.solved = true;
                 tiles_model.set_row_data(t1_idx, t1);
                 t2.solved = true;
