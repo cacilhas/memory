@@ -1,13 +1,14 @@
 [package]
 name = "memory"
 version = "1.0.0"
-authors = ["Montegasppα Cacilhας <montegasppa@cacilhas.info>"]
+authors = ["Montegasppα Cacilhας <montegasppa@cacilhas.cc>"]
 edition = "2021"
 build = "build.rs"
 
 [profile.release]
 opt-level     = "s"
 codegen-units = 1
+panic = "abort"
 debug = false
 lto   = true
 rpath = false
